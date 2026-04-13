@@ -7,6 +7,7 @@ const projects = [
     title: "WildTrack AI System",
     period: "Jan 2024 – Dec 2024",
     icon: PawPrint,
+    imageUrl: "https://www.wildtrack.org/assets/images/blog/Lion_track_hands.jpg",
     description:
       "Led a cross-functional team of 10 to build a non-invasive AI-powered wildlife monitoring system that identifies species, individuals, sex, and age-class from footprint images—eliminating the need for GPS collars or physical capture.",
     highlights: [
@@ -21,6 +22,7 @@ const projects = [
     title: "Healthcare Virtual Assistant",
     period: "Jan 2025 – Dec 2025",
     icon: Stethoscope,
+    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     description:
       "Built a two-part AI healthcare platform: an appointment booking & clinical intake voice agent, and an AI-powered health advice assistant—both using Transformer-based NLP with RAG pipelines.",
     highlights: [
@@ -35,6 +37,7 @@ const projects = [
     title: "Traffic Evacuation AI System",
     period: "Jan 2022 – Dec 2023",
     icon: TrafficCone,
+    imageUrl: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     description:
       "Developed an AI-driven decision support system for evacuation traffic management, used during Hurricane Ian (2022) to optimize traffic flow and support safe evacuation planning.",
     highlights: [
@@ -68,6 +71,7 @@ const ProjectsSection = () => {
                     <p className="text-xs text-muted-foreground">{project.period}</p>
                   </div>
                 </div>
+                <img src={project.imageUrl} alt={project.title} className="w-full h-32 object-cover rounded-lg mb-4" />
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
