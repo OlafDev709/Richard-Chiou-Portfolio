@@ -7,6 +7,7 @@ const projects = [
     title: "WildTrack AI System",
     period: "Jan 2024 – Dec 2024",
     icon: PawPrint,
+    externalUrl: "https://www.wildtrack.org/",
     imageUrl: "https://www.wildtrack.org/assets/images/blog/Lion_track_hands.jpg",
     description:
       "Led a cross-functional team of 10 to build a non-invasive AI-powered wildlife monitoring system that identifies species, individuals, sex, and age-class from footprint images—eliminating the need for GPS collars or physical capture.",
@@ -37,6 +38,7 @@ const projects = [
     title: "Traffic Evacuation AI System",
     period: "Jan 2022 – Dec 2023",
     icon: TrafficCone,
+    externalUrl: "https://www.streetlightdata.com/",
     imageUrl: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     description:
       "Developed an AI-driven decision support system for evacuation traffic management, used during Hurricane Ian (2022) to optimize traffic flow and support safe evacuation planning.",
@@ -56,43 +58,58 @@ const ProjectsSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold mb-12 gradient-text inline-block">My Projects</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <Card
-              key={project.title}
-              className="bg-card/50 backdrop-blur border-border hover:border-primary/30 transition-all hover:-translate-y-1 duration-300"
-            >
-              <CardContent className="p-6 flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 rounded-xl bg-primary/10">
-                    <project.icon size={22} className="text-primary" />
+          {projects.map((project) => {
+            const card = (
+              <Card
+                className="bg-card/50 backdrop-blur border-border hover:border-primary/30 transition-all hover:-translate-y-1 duration-300 h-full"
+              >
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2.5 rounded-xl bg-primary/10">
+                      <project.icon size={22} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{project.title}</h3>
+                      <p className="text-xs text-muted-foreground">{project.period}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">{project.title}</h3>
-                    <p className="text-xs text-muted-foreground">{project.period}</p>
+                  <img src={project.imageUrl} alt={project.title} className="w-full h-32 object-cover rounded-lg mb-4" />
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  <ul className="space-y-1.5 mb-4 flex-1">
+                    {project.highlights.map((h, i) => (
+                      <li key={i} className="text-sm text-muted-foreground flex gap-2">
+                        <span className="text-primary shrink-0">✦</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-border">
+                    {project.tech.map((t) => (
+                      <Badge key={t} variant="secondary" className="text-xs">
+                        {t}
+                      </Badge>
+                    ))}
                   </div>
-                </div>
-                <img src={project.imageUrl} alt={project.title} className="w-full h-32 object-cover rounded-lg mb-4" />
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                <ul className="space-y-1.5 mb-4 flex-1">
-                  {project.highlights.map((h, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-primary shrink-0">✦</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-border">
-                  {project.tech.map((t) => (
-                    <Badge key={t} variant="secondary" className="text-xs">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            );
+
+            return project.externalUrl ? (
+              <a
+                key={project.title}
+                href={project.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-underline cursor-pointer"
+              >
+                {card}
+              </a>
+            ) : (
+              <div key={project.title}>{card}</div>
+            );
+          })}
         </div>
       </div>
     </section>

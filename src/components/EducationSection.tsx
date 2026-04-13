@@ -3,12 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const education = [
   {
-    school: "Ph.D. in Computer Science",
-    detail: "In Progress (Expected Feb 2026)",
-    period: "Jan 2024 – Present",
-    description: "Focusing on advanced AI/ML methodologies strengthening research depth and industry innovation.",
-  },
-  {
     school: "University of California, Berkeley",
     detail: "Master's in EECS — GPA: 3.86",
     period: "May 2015 – Dec 2016",
@@ -16,7 +10,7 @@ const education = [
   },
   {
     school: "Columbia University",
-    detail: "Bachelor's in Computer Science",
+    detail: "Bachelor's in Computer Science — GPA: 3.9",
     period: "Sep 2011 – Apr 2015",
     description: "New York, NY.",
   },
